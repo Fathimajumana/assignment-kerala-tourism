@@ -28,24 +28,24 @@ body{
 
 .header{
     position: relative;
-    /* width: 100%; */
+    width: 100%;
 }
 
 .header-inner{
     position: absolute;
     top:0;
     left: 0;
-    /* width: 100%; */
+    width: 100%;
     z-index: 99;
     background-color: transparent;
 } 
 .menu{
     position: relative;
-    /* width: 90%; */
+    width: 90%;
     z-index: 9999;
 }
 .my-navbar{
-    /* width: 100%; */
+    width: 100%;
     padding: 20px 20px;
     background-color: white;
     position: absolute;
@@ -86,7 +86,7 @@ body{
     background: black;
 }
 
-/* .navbar-scroll{
+.navbar-scroll{
     position: fixed;
     top: 0;
     left: 0;
