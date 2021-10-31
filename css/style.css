@@ -35,13 +35,13 @@ body{
     position: absolute;
     top:0;
     left: 0;
-    width: 100%;
+    /* width: 100%; */
     z-index: 99;
     background-color: transparent;
 } 
 .menu{
     position: relative;
-    width: 90%;
+    /* width: 90%; */
     z-index: 9999;
 }
 .my-navbar{
