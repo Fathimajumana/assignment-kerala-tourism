@@ -375,7 +375,7 @@ section .section-title{
     position: relative;
     transform: translateY(-150%);
     cursor: pointer;
-    top: 60px;
+    top: 80px;
 }
 
 .news marquee p{
