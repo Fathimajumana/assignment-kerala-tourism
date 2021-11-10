@@ -334,7 +334,7 @@ section .section-title{
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 85vh;
+    top: 400px;
 }
 .news{
     position: relative;
