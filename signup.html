@@ -19,9 +19,12 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   <!------ Include the above in your HEAD tag ---------->
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link rel="stylesheet" href="css/css/all.min.css">
+  <link rel="stylesheet" href="css/css/fontawesome.min.css">
 
 
   <!-- Bootstrap CSS -->
@@ -30,38 +33,249 @@
 
   <title>Registration</title>
   <style>
-    .divider-text {
-      position: relative;
-      text-align: center;
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
+    .form-container {
 
-    .divider-text span {
-      padding: 7px;
-      font-size: 12px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .divider-text:after {
-      content: "";
-      position: absolute;
+      max-width: 600px;
       width: 100%;
-      border-bottom: 1px solid #ddd;
-      top: 55%;
+      border-radius: 20px;
+      margin: 50px auto;
+      background-color: rgba(0, 0, 0, 0.719);
+      box-shadow: 0px 0px 165px 30px rgba(0, 0, 0, 0.85) inset;
+      -webkit-box-shadow: 0px 0px 165px 30px rgba(216, 146, 146, 0.85) inset;
+      -moz-box-shadow: 0px 0px 165px 30px rgba(0, 0, 0, 0.85) inset;
+      padding: 30px;
+      padding-left: 40px;
+      color: white;
+
+    }
+
+    h2 {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    /* ################################## Form Field Design ################################################ */
+    .form-check {
+      margin-bottom: 5px;
+      padding-bottom: 15px;
+      position: relative;
+      width: 90%;
+    }
+
+    .form-check label {
+      display: inline-block;
+      margin-bottom: 1px;
+    }
+
+    .form-check input {
+      margin-top: 30px;
+      margin-left: 30px;
+      color: white;
+      font-style: italic;
+      font-family: 'Open Sans', sans-serif;
+      background: transparent;
+      border: 0;
+      border-bottom: 3px solid #f0f0f0;
+
+      /* border-radius: 4px; */
+      /* display: block; */
+      font-family: inherit;
+
+      font-size: 15px;
+      padding: 1px;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .form-check ::-webkit-input-placeholder {
+      color: white;
+      opacity: 0.7;
+    }
+
+    .form-check input:focus {
+      outline: 0;
+      border-color: rgba(0, 81, 255, 0.534);
+    }
+
+    .form-check.success input {
+      border-color: #2ecc71;
+    }
+
+    .form-check.error input {
+      border-color: #e74c3c;
+    }
+
+    /* ################################## Form Error mssg Design ################################################ */
+    .form-check small {
+      color: #e74c3c;
+      position: absolute;
+      margin-left: 55px;
+      bottom: 0px;
       left: 0;
-      z-index: 1;
+      visibility: hidden;
+      transition: all 0.3s;
     }
 
-    .btn-facebook {
-      background-color: #405D9D;
-      color: #fff;
+    .form-check.error small {
+      visibility: visible;
     }
 
-    .btn-twitter {
-      background-color: #42AEEC;
+    /* ################################## Form Button Design ################################################ */
+    .form-container button {
+      /* background-color: #5444ad;
+      border: 2px solid #2c1e7c; */
+      background: transparent;
+      cursor: pointer;
+      border-radius: 4px;
       color: #fff;
+      display: block;
+      font-family: inherit;
+      font-size: 16px;
+      padding: 2px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .form-container .bttn {
+      border-color: transparent;
+      border-bottom: 10px solid #f0f0f03a;
+      border-top: 10px solid #f0f0f03a;
+    }
+
+    .form-container .bttn:focus {
+      outline: 0;
+
+      border-bottom: 10px solid #330ddb83;
+      border-top: 10px solid #330ddb83;
+      transition: all 0.3s;
+
+    }
+
+    .form-container .bttn:focus .sub {
+      color: white;
+      opacity: .1;
+      transition: all 0.3s;
+
+    }
+
+    /* ################################## Form Icon Design ################################################ */
+    .form-check i {
+      position: absolute;
+      transform: translateY(105%);
+      font-size: 25px;
+      color: #ffffff;
+      transition: all 0.3s;
+    }
+
+    .form-check.success i {
+      color: #2ecc71;
+      position: absolute;
+      transform: translateY(105%);
+      font-size: 25px;
+
+    }
+
+    .form-check.error i {
+      color: #e74c3c;
+      position: absolute;
+      transform: translateY(105%);
+      font-size: 25px;
+    }
+
+    /* ################################## Form Password show icon Design ################################################ */
+    .eye {
+      float: right;
+      cursor: pointer;
+      transform: translateY(00%);
+      font-size: 20px;
+    }
+
+    .eye i {
+
+      transform: translateY(-100%);
+
+    }
+
+    .form-check.success .eye i {
+      transform: translateY(-100%);
+
+    }
+
+    .form-check.error .eye i {
+      transform: translateY(-100%);
+    }
+
+    #hide1 {
+      display: none;
+    }
+
+    /* ################################## Password strength indicator Design ################################################ */
+    .indicator {
+      height: 5px;
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      display: none;
+      transition: all 1s;
+    }
+
+    .indicator span {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: lightgrey;
+      border-radius: 5px;
+    }
+
+    .indicator span:nth-child(2) {
+      margin: 0 3px;
+    }
+
+    .indicator span.active:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .indicator span.weak:before {
+      background-color: #ff4757;
+    }
+
+    .indicator span.medium:before {
+      background-color: orange;
+    }
+
+    .indicator span.strong:before {
+      background-color: #23ad5c;
+    }
+
+    /* ################################## Pass strength text Design ################################################ */
+    .text {
+      font-size: 15px;
+      margin-left: 30px;
+      font-variant-alternates: ornaments();
+      font-weight: 600;
+      display: none;
+      margin-bottom: 2px;
+    }
+
+    .text.weak {
+      color: #ff4757;
+    }
+
+    .text.medium {
+      color: orange;
+    }
+
+    .text.strong {
+      color: #23ad5c;
     }
   </style>
 </head>
@@ -110,97 +324,98 @@
   <!-- /header section ends -->
 
 
+  <div class="container-fluid">
 
-  <div class="container">
-    <br>
-    <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/">
-        Bootstrap-ecommerce.com</a></p>
-    <hr>
-    <div class="card bg-light">
-      <article class="card-body mx-auto" style="max-width: 400px;">
-        <h4 class="card-title mt-3 text-center">Create Account</h4>
-        <p class="text-center">Get started with your free account</p>
-        <p>
-          <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-          <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-        </p>
-        <p class="divider-text">
-          <span class="bg-light">OR</span>
-        </p>
-        <form>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-            </div>
-            <input name="" class="form-control" placeholder="Full name" type="text">
-          </div> <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-            </div>
-            <input name="" class="form-control" placeholder="Email address" type="email">
-          </div> <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-            </div>
-            <select class="custom-select" style="max-width: 120px;">
-              <option selected="">+91</option>
-              <option value="1">+972</option>
-              <option value="2">+198</option>
-              <option value="3">+701</option>
-            </select>
-            <input name="" class="form-control" placeholder="Phone number" type="text">
-          </div> <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-            </div>
-            <input class="form-control" placeholder="Create password" type="password">
-          </div> <!-- form-group// -->
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" placeholder="Repeat password" type="password">
-          </div> <!-- form-group// -->
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
-          </div> <!-- form-group// -->
-          <p class="text-center">Have an account? <a href="login.html">Log In</a> </p>
-        </form>
-      </article>
-    </div> <!-- card.// -->
+    <form action="login.html" id="my-form" class="form-container" onsubmit="return validateFn()">
+      <br>
+      <h2>Sign up</h2>
 
+
+      <!-- ####################################### First name ################################################################### -->
+      <div class="form-check">
+        <i class="icon ion-ios-person"></i>
+        <input id="fname" placeholder="First Name" type="text" onclick="resetmssg()">
+        <small>Error mssg</small>
+      </div>
+      <!-- ######################################## Last Name ################################################################## -->
+      <div class="form-check">
+        <i class="icon ion-ios-person-add"></i>
+        <input id="lname" placeholder="Last Name" type="text">
+        <small>Error mssg </small>
+      </div>
+      <!-- ########################################"Email"################################################################## -->
+      <div class="form-check">
+        <i class="icon ion-ios-mail"></i>
+        <input id="email" placeholder="Email" type="email">
+        <small>Error mssg </small>
+      </div>
+      <!-- ########################################"Mobile no:"################################################################## -->
+      <div class="form-check">
+        <i class="icon ion-ios-call"></i>
+        <input id="mob" placeholder="Mobile no: (10 digit number)" type="text">
+        <small id="mssg">Error mssg </small>
+      </div>
+      <!-- #######################################"Password"################################################################### -->
+      <div class="form-check">
+        <i class="icon ion-ios-key"></i>
+        <input id="pass" onkeyup="trigger()" type="Password" placeholder="Password">
+        <span class="eye" onclick="myfn()">
+          <i id="hide1" class="icon ion-ios-eye"></i>
+          <i id="hide2" class="icon ion-ios-eye-off"></i>
+        </span>
+        <small>Error mssg </small>
+        <div class="indicator">
+          <span class="weak"></span>
+          <span class="medium"></span>
+          <span class="strong"></span>
+        </div>
+        <div class="text">
+        </div>
+      </div>
+      <!-- ##########################################"Retype Password"################################################################ -->
+      <div class="form-check">
+        <i class="icon ion-ios-unlock"></i>
+        <!-- <label for="username"><span style="font-size: 14px; font-weight: 550; color: rgb(255, 255, 255);">Password check</span></label> -->
+        <input type="password" placeholder="Retype Password" id="pass2" />
+        <small>Error mssg </small>
+      </div>
+      <!-- ########################################################################################################## -->
+
+
+      <br><br>
+      <button class="bttn" type="submit"><span class="sub">Submit</span> </button>
+    </form>
   </div>
-  <!--container end.//-->
 
+  <script src="signup.js"></script>
+
+</body>
+
+</html>
+
+<br><br>
+<article class="bg-secondary mb-3">
+  <div class="card-body text-center">
+    <p class="h5">This webpage is created as a part of an assignment for ICT’s Mean Stack Development course using
+      HTML5, CSS3 and Bootstrap5. All images, videos, logos and icons used in this webpage are free sources available
+      on internet. No copyrights here.</p> <br>
+    <p>©<span>2021</span> <a href="#" class="transition">Fathimath Jumana</a> All rights reserved.</p>
+  </div>
   <br><br>
-  <article class="bg-secondary mb-3">
-    <div class="card-body text-center">
-      <p class="h5">This webpage is created as a part of an assignment for ICT’s Mean Stack Development course using
-        HTML5, CSS3 and Bootstrap5. All images, videos, logos and icons used in this webpage are free sources available
-        on internet. No copyrights here.</p> <br>
-      <p>©<span>2021</span> <a href="#" class="transition">Fathimath Jumana</a> All rights reserved.</p>
-    </div>
-    <br><br>
-  </article>
+</article>
 
 
 
 
 
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-    crossorigin="anonymous"></script>
+<script src="signup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 </body>
 
